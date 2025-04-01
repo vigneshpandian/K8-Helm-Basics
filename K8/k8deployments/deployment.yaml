@@ -5,6 +5,8 @@ metadata:
   labels:
     app: busyBox # Label to identify the application
     tier: backend # Label to identify the tier of the application
+  annotations:
+    kubernetes.io/change-cause: "Initial deployment of busybox"
 spec:
   replicas: 3 # Number of pod replicas to maintain
   selector:
