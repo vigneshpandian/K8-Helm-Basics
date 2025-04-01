@@ -1,0 +1,1 @@
+It is mostly same as the replicasets the only difference its a deployment instead of replicaset use deployments and be mindful on the labels
