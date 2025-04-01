@@ -1,1 +1,62 @@
 It is mostly same as the replicasets the only difference its a deployment instead of replicaset use deployments and be mindful on the labels
+
+Here’s the sequence of commands for deploying busybox-deployment, recording its history, adding an additional image, and rolling back to the first version.
+
+Step 1: Create the Deployment (Initial Version)
+
+kubectl apply -f deployment.yaml
+
+This creates and applies a busybox deployment.
+
+Step 2: Record Deployment History
+
+kubectl annotate deployment busybox-deployment kubernetes.io/change-cause="Updated busybox deployment replica"
+
+The --record flag helps track changes in ro
+Step 3: Check the Deployment History
+
+kubectl rollout history deployment busybox-deployment
+
+Step 4: Update the Deployment with an  replica to 10
+
+kubectl scale deployment busybox-deployment --replicas=10
+kubectl annotate deployment busybox-deployment kubernetes.io/change-cause="Scaled to 10 replicas"
+
+kubectl set image deployment/busybox-deployment busybox=busybox:latest
+kubectl annotate deployment busybox-deployment kubernetes.io/change-cause="Updated busybox image to latest" --overwrite
+
+This adds an nginx container alongside busybox.
+
+Step 5: Check Deployment Status
+
+kubectl rollout status deployment busybox-deployment
+
+Ensure the deployment is successfully rolled out.
+
+Step 6: Verify Deployment History Again
+
+kubectl rollout history deployment busybox-deployment
+
+This will show multiple revisions (e.g., 1 for the first deployment, 2 for the update).
+
+Step 7: Roll Back to the First Version
+
+kubectl rollout undo deployment busybox-deployment --to-revision=1
+
+Step 8: Verify the Rollback
+
+kubectl rollout status deployment busybox-deployment
+kubectl rollout history deployment busybox-deployment
+
+This sequence ensures that:
+
+The initial deployment is created.
+
+Changes are recorded for history tracking.
+
+An additional image (nginx) is added.
+
+The deployment is checked for status.
+
+A rollback to the first version is performed.
+
