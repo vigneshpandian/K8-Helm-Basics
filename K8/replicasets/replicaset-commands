@@ -1,0 +1,14 @@
+#create replicaset
+kubectl apply -f replicaset.yaml
+
+#desc replicaset
+kubectl describe rs busybox-replicaset
+
+#scale replicaset
+kubectl scale replicaset busybox-replicaset --replicas=2
+
+#delete replicaset
+kubectl delete replicaset busybox-replicaset
+
+#view replicasets
+kubectl get rs
