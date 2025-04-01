@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: backend
+  name: busybox-replicaset # Name of the ReplicaSet
   labels:
-    app: busyBox
-    tier: backend
+    app: busyBox # Label to identify the application
+    tier: backend # Label to identify the tier of the application
 spec:
-  replicas: 2
+  replicas: 5 # Number of pod replicas to maintain
   selector:
     matchLabels:
-      env: development
+      env: development # Selector to match pods with this label
   template:
     metadata:
-     name: busybox #name of the pod
+     name: busybox # Name of the pod
      labels:
-        env: development
-        tier: backend
-     spec:
-       containers:
-         - name: busybox #name of the container
-           image: busybox #image from docker
-           command: [ "sleep", "3600" ]
+        env: development # Label to identify the environment
+        tier: backend # Label to identify the tier of the application
+    spec:
+      containers:
+        - name: busybox # Name of the container
+          image: busybox # Docker image to use for the container
+          command: [ "sleep", "3600" ] # Command to run inside the container
