@@ -1,0 +1,14 @@
+To get started with K8 and Helm you need the below tools
+
+Kubectl driver from Kubernetes
+Minikube 
+Docker
+Helm charts
+
+To start minikube use the below command
+
+minikube start
+
+To start docker use the below command
+
+docker start
