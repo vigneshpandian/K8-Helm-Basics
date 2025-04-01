@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: backend
+  labels:
+    app: busyBox
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: development
+  template:
+    metadata:
+     name: busybox #name of the pod
+     labels:
+        env: development
+        tier: backend
+     spec:
+       containers:
+         - name: busybox #name of the container
+           image: busybox #image from docker
+           command: [ "sleep", "3600" ]
