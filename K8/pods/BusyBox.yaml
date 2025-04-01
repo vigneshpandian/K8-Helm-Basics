@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox #name of the pod
+spec:
+  containers:
+  - name: busybox #name of the container
+    image: busybox #image from docker
+    command: [ "sleep", "3600" ]
+  restartPolicy: Always #busy box container is short lived so to keep it alive we use the sleep command and once that dies it will restart
