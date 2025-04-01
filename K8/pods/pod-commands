@@ -1,0 +1,15 @@
+#create pod
+kubectl apply -f busyBoxPod.yaml
+
+#view pods
+
+kubectl get pods
+
+#describe pods
+
+kubectl describe pod busyBox
+
+#delete pod
+
+kubectl delete pod busyBox
+
