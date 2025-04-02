@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver-deployment # Name of the Deployment
+  labels:
+    app: webServer # Label to identify the application
+    tier: frontend # Label to identify the tier of the application
+  annotations:
+    kubernetes.io/change-cause: "Initial deployment of webserver"
+spec:
+  replicas: 5 # Number of pod replicas to maintain
+  selector:
+    matchLabels:
+      env: development # Selector to match pods with this label
+      app: webserver-app
+  template:
+    metadata:
+     name: webserver # Name of the pod
+     labels:
+        env: development # Label to identify the environment
+        tier: frontend # Label to identify the tier of the application
+        app: webserver-app # name of the app
+    spec:
+      containers:
+        - name: nginx # Name of the container
+          image: nginx # Docker image to use for the container
+          ports:
+            - containerPort: 80
