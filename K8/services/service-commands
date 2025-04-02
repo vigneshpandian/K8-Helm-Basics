@@ -15,3 +15,6 @@ minikube service webserver-service get url
 use the curl command to see the output
 
 by default it uses the random algorthm for load balancing
+
+kubectl exec -it <<pod-name>> -- sh
+go to the shell and type the curl along with clusterip to see the result of the nginx
