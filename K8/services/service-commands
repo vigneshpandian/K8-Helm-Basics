@@ -1,0 +1,17 @@
+#commands 
+
+#get services
+
+kubectl get svc
+
+#get svc url from nodeport
+
+minikube service <<svc_name>> get url
+
+minikube service webserver-service get url
+
+#curl
+
+use the curl command to see the output
+
+by default it uses the random algorthm for load balancing
