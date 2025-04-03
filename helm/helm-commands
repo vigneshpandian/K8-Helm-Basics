@@ -1,1 +1,29 @@
+Helm is package manager for k8 and you can easily install and uninstall components like redis and other images.
+
+for helm, you need a chart repository to add a chart. the charts are in repository
+
+#List chart repostories
+
+helm repo list
+
+#to add a chart
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+#search a chart
+
+helm search repo redis
+
+#to add a chart
+helm install <<name-of-instance>> <<chart-name>> <<optional-flags??
+
+helm install cache-server bitnami/redis -n helm-demo
+
+Note: you have to create a namespace before using the namespace tag
+
+#to uninstall a chart
+
+helm uninstall <<name of instance>>
+
+helm uninstall cache-server -n helm-demo
 
