@@ -20,3 +20,7 @@ helm list -n helm-demo
 #if you want to re-use the same values, as you need to supply the config during upgrade
 
 helm upgrade cache-server bitnami/redis --reuse-values -n helm-demo
+
+#dry run available to see the kube object (pod, service, deployment etc..) that will be deployed
+ helm upgrade cache-server bitnami/redis --reuse-values -n helm-demo --dry-run
+
