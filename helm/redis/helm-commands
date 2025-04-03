@@ -7,3 +7,16 @@ Alternatively you can also use --set
 helm install cache-server bitnami/redis -n helm-demo  --set auth.enabled=true  --set auth.password="narun"
 
 But the recommed approach is to use values.yaml for version control purposes
+
+Also, you can use upgrade to update the redis as well as configuration
+helm upgrade cache-server bitnami/redis --values helm/redis/values.yaml -n helm-demo
+
+#to see the status of helm your chart
+helm status cache-server -n helm-demo
+
+#to see the list of deployed charts
+helm list -n helm-demo
+
+#if you want to re-use the same values, as you need to supply the config during upgrade
+
+helm upgrade cache-server bitnami/redis --reuse-values -n helm-demo
