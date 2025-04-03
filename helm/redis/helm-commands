@@ -1,0 +1,9 @@
+#to install redis using values.yaml
+
+helm install cache-server bitnami/redis -n helm-demo --values helm/redis/values.yaml
+
+Alternatively you can also use --set 
+
+helm install cache-server bitnami/redis -n helm-demo  --set auth.enabled=true  --set auth.password="narun"
+
+But the recommed approach is to use values.yaml for version control purposes
