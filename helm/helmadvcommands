@@ -1,0 +1,39 @@
+# helm dry run
+Gives you the yaml files that will send to kube it will be mostly kube objects pod, service, deployment, secrets
+
+helm upgrade cache-server bitnami/redis -n helm-demo --dry-run
+
+But we can't use this it will have some non yaml content
+
+#helm templates to generate the templates that can be used to create kube objects
+
+helm template cache-server bitnami/redis -n helm-demo --values=values.yaml
+
+#helm to see the values that we supplied for instance
+helm get values cache-server -n helm-demo
+
+#helm to see the values that we supplied for the revision
+#get history
+helm history cache-server -n helm-demo
+
+helm get values cache-server -n helm-demo --revision 2
+
+helm get manifest cache-server -n helm-demo --revision 2
+#keep history for uninstall of the server
+  helm uninstall cache-server -n helm-demo --keep-history
+
+#to view revisions information in the secrets this has the kube objects in encoded format
+kubectl get secrets -n helm-demo
+
+#rollback the instance even if it's uninstalled when you kept the history
+helm rollback cache-server 2 -n helm-demo
+
+#helm upgrade / install if not present  
+helm upgrade --install cache-server bitnami/redis -n helm-demo 
+
+#helm to verify installation --wait command waits for the pod to up and running for default time 5mins
+helm upgrade --install cache-server bitnami/redis -n helm-demo --wait --timeout 5m10s
+
+#helm to auto rollback if the current installation fails, in this wait will auto enable
+helm upgrade --install cache-server bitnami/redis -n helm-demo --atomic
+
