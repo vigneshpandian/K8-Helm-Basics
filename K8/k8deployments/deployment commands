@@ -19,10 +19,10 @@ kubectl rollout history deployment busybox-deployment
 
 Step 4: Update the Deployment with an  replica to 10
 
-kubectl scale deployment busybox-deployment --replicas=10
+kubectl scale deployment busybox-deployment --replicas=10 --record
 kubectl annotate deployment busybox-deployment kubernetes.io/change-cause="Scaled to 10 replicas"
 
-kubectl set image deployment/busybox-deployment busybox=busybox:latest
+kubectl set image deployment/busybox-deployment busybox=busybox:latest --record
 kubectl annotate deployment busybox-deployment kubernetes.io/change-cause="Updated busybox image to latest" --overwrite
 
 This adds an nginx container alongside busybox.
