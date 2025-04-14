@@ -1,5 +1,9 @@
 Helm is package manager for k8 and you can easily install and uninstall components like redis and other images.
 
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+
 for helm, you need a chart repository to add a chart. the charts are in repository
 
 #List chart repostories
