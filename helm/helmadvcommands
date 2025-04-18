@@ -37,3 +37,22 @@ helm upgrade --install cache-server bitnami/redis -n helm-demo --wait --timeout 
 #helm to auto rollback if the current installation fails, in this wait will auto enable
 helm upgrade --install cache-server bitnami/redis -n helm-demo --atomic
 
+#helm create chart
+helm create chart <<chart-name>>
+
+helm create chart redis-api-demo
+
+#helm install chart
+helm install <<instance-name>> <<chart-location
+
+helm install redis-demo ./
+
+#to check the healthh
+curl http://192.168.49.2:30492/healthz
+#hosting your own chart
+#before adding this your git repo should be present and git hub page should be activated in root
+#once done push the chart to the repo
+helm repo index . --url https://<your-github-username>.github.io/<repo-name>
+
+helm repo add myrepo https://<your-github-username>.github.io/<repo-name>
+helm repo update
