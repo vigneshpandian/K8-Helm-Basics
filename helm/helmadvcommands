@@ -46,6 +46,8 @@ helm create chart redis-api-demo
 helm install <<instance-name>> <<chart-location
 
 helm install redis-demo ./
+#package the chart go the path and do this
+helm package ./
 
 #to check the healthh
 curl http://192.168.49.2:30492/healthz
