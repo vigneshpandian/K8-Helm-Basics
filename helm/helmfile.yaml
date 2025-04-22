@@ -1,0 +1,20 @@
+helmDefaults:
+  atomic: true
+  cleanupOnFail: true
+  wait: true
+
+environments:
+  dev:
+    values:
+      - values.dev.yaml  # File containing dev-specific values
+  prod:
+    values:
+      - values.prod.yaml  # File containing prod-specific values
+
+releases:
+  - name: redis-api-demo
+    namespace: default
+    chart: redis-api-demo/redis-api-demo  # Assuming the chart is in a repo or local path
+    version: "1.0.0"  # Specify the chart version if necessary
+    values:
+      - values.common.yaml  # Common values shared across environments
