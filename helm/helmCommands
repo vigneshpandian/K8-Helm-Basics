@@ -1,0 +1,9 @@
+#to apply helmfile go to the directory and apply it
+
+helmfile -e dev apply
+
+helmfile -e prod apply
+Dry Run:
+helmfile diff
+#delete release
+helmfile destroy
